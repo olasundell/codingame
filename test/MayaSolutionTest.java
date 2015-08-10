@@ -9,41 +9,41 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SolutionTest {
+public class MayaSolutionTest {
 
 	public static final String DIR = "/Users/olasundell/code/codingame/src/maya/";
 
 	@Test
 	public void additionWithCarry() throws IOException {
-		String result = Solution.solve(new Scanner(new File(DIR + "maya-additionwithcarry.txt")));
+		String result = MayaSolution.solve(new Scanner(new File(DIR + "maya-additionwithcarry.txt")));
 		String expected = readFile("additionwithcarry-solution.txt");
 		Assert.assertEquals(expected, result);
 	}
 
 	@Test
 	public void multiplication() throws IOException {
-		String result = Solution.solve(new Scanner(new File(DIR + "multiplication.txt")));
+		String result = MayaSolution.solve(new Scanner(new File(DIR + "multiplication.txt")));
 		String expected = readFile("multiplication-solution.txt");
 		Assert.assertEquals(expected, result);
 	}
 
 	@Test
 	public void subtraction() throws IOException {
-		String result = Solution.solve(new Scanner(new File(DIR + "subtraction.txt")));
+		String result = MayaSolution.solve(new Scanner(new File(DIR + "subtraction.txt")));
 		String expected = readFile("subtraction-solution.txt");
 		Assert.assertEquals(expected, result);
 	}
 
 	@Test
 	public void greatMultiplication() throws IOException {
-		String result = Solution.solve(new Scanner(new File(DIR + "great-multiplication.txt")));
+		String result = MayaSolution.solve(new Scanner(new File(DIR + "great-multiplication.txt")));
 		String expected = readFile("great-multiplication-solution.txt");
 		Assert.assertEquals(expected, result);
 	}
 
 	@Test
 	public void zero() throws IOException {
-		String result = Solution.solve(new Scanner(new File(DIR + "zero.txt")));
+		String result = MayaSolution.solve(new Scanner(new File(DIR + "zero.txt")));
 		String expected = readFile("zero-solution.txt");
 		Assert.assertEquals(expected, result);
 	}
@@ -61,7 +61,7 @@ public class SolutionTest {
 		strings.add("....");
 		strings.add("....");
 
-		long num = Solution.getNumber(strings, 4, 4);
+		long num = MayaSolution.getNumber(strings, 4, 4);
 
 		Assert.assertEquals(5, num);
 	}

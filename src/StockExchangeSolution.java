@@ -1,6 +1,4 @@
 import java.util.*;
-import java.io.*;
-import java.math.*;
 import java.util.stream.Collectors;
 
 /**
@@ -10,7 +8,11 @@ import java.util.stream.Collectors;
 class StockExchangeSolution {
 
     public static void main(String args[]) {
-        Scanner in = new Scanner(System.in);
+	    Scanner in = new Scanner(System.in);
+	    System.out.println(solve(in));
+    }
+
+	protected static String solve(Scanner in) {
         int n = in.nextInt();
         in.nextLine();
         String vs = in.nextLine();
@@ -20,24 +22,27 @@ class StockExchangeSolution {
 
 	    List<Integer> list = Arrays.stream(vs.split(" ")).map(Integer::valueOf).collect(Collectors.toList());
 
-	    int indexForLeast = 0;
-	    int least = Integer.MAX_VALUE;
+	    int diff = Integer.MAX_VALUE;
 
-	    for (int i = 0 ; i < list.size() ; i++) {
-		    if (list.get(i) < least) {
-			    least = list.get(i);
-			    indexForLeast = i;
-		    }
-	    }
+		for (int i = 0 ; i < list.size() - 1; i++) {
+			if (list.get(i) <= list.get(i + 1)) {
+				continue;
+			}
 
-	    Optional<Integer> highestOpt = list.subList(0, indexForLeast).stream().max(Comparator.<Integer>naturalOrder());
+			for (int j = i + 1 ; j < list.size() ; j++) {
+				final int current = list.get(j) - list.get(i);
+				if (current < diff) {
+					diff = current;
+				} else if (list.get(j) > list.get(i)){
+					break;
+				}
+			}
+		}
 
-	    int highest = least;
-
-	    if (highestOpt.isPresent()) {
-		    highest = highestOpt.get();
-	    }
-
-        System.out.println(least - highest);
+		if (diff < 0) {
+			return String.valueOf(diff);
+		} else {
+			return "0";
+		}
     }
 }

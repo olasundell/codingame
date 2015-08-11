@@ -1,8 +1,4 @@
-import sun.jvm.hotspot.interpreter.BytecodeGetStatic;
-
 import java.util.*;
-import java.io.*;
-import java.math.*;
 
 /**
  * Auto-generated code below aims at helping you parse
@@ -20,30 +16,53 @@ class Solution {
 
 	public static String solve(Scanner in) {
 		int N = in.nextInt();
-		List<byte[]> strings = new ArrayList<>();
+		List<String> strings = new ArrayList<>();
 		for (int i = 0; i < N; i++) {
-			strings.add(in.next().getBytes());
+			strings.add(in.next());
 		}
 
+		Set<String> oldSubstrings = new HashSet<>();
+		Set<String> newSubstrings = new HashSet<>();
 
-		return "answer";
+		for (int i = 0 ; i < N ; i++) {
+			for (int j = i + 1 ; j < N ; j++) {
+				final String a = strings.get(i);
+				final String b = strings.get(j);
+				newSubstrings.addAll(getMatches(a, b));
+			}
+		}
+
+		SortedSet<String> substrings = new TreeSet<>((a, b) -> a.length() - b.length());
+
+		return String.valueOf(substrings.first().length());
 	}
 
-	protected static Set<String> getMatches(byte[] a, byte[] b) {
+	protected static Set<String> matchSets(Set<String> one, Set<String> two) {
+		return new HashSet<>();
+	}
+
+	protected static Set<String> getMatches(String a, String b) {
 		final HashSet<String> strings = new HashSet<>();
 
-		for (int i = 0 ; i < b.length; i++) {
-			for (int j = a.length - 1 ; j <= 0 ; j--) {
-				boolean match = true;
-				for (int k = j ; k < a.length ; k++) {
-					if (a[k] != b[i]) {
-						match = false;
-						break;
-					}
-				}
-				if (match) {
-					strings.add(new String(Arrays.copyOfRange(j)));
-				}
+		// trivial case
+		if (a.contains(b)) {
+			strings.add(a);
+		} else if (b.contains(a)) {
+			strings.add(b);
+		}
+
+		// forward
+		for (int i = 0 ; i < a.length(); i++) {
+			final String aSubstring = a.substring(i);
+			if (b.indexOf(aSubstring) == 0) {
+				strings.add(a.substring(0, i) + b);
+			}
+		}
+
+		for (int i = 0 ; i < b.length(); i++) {
+			final String bSubstring = b.substring(i);
+			if (a.indexOf(bSubstring) == 0) {
+				strings.add(b.substring(0, i) + a);
 			}
 		}
 

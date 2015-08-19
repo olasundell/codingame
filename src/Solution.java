@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
  **/
-class Player {
+class SkynetVirusPlayerTwo {
 	private static Map<Integer, List<Integer>> board = new HashMap<>();
 
 	public static void main(String args[]) {
@@ -47,6 +47,7 @@ class Player {
 				}
 			}
 		}
+
 
 		// game loop
 		while (true) {

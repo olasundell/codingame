@@ -34,6 +34,7 @@ class Player {
         in.nextLine();
 
 	    boolean first = true;
+	    boolean cameFromAnExit = false;
 
         // game loop
         while (true) {
@@ -55,26 +56,45 @@ class Player {
 		        in.nextLine();
 	        }
 
-	        Direction moveDirection;
+	        Direction moveDirection = Direction.NONE;
+	        Direction cameFromDirection;
 
 	        final Tile tile = board[YI][XI];
 	        System.err.print("Current tile is type " + tile.id + ", ");
 	        switch (POS) {
 	        case "TOP":
-		        System.err.println("came from the north");
-		        moveDirection = tile.entriesAndExits.get(Direction.NORTH);
+		        cameFromDirection = Direction.NORTH;
 		        break;
 	        case "LEFT":
-		        System.err.println("came from the west!");
-		        moveDirection = tile.entriesAndExits.get(Direction.WEST);
+		        cameFromDirection = Direction.WEST;
 		        break;
 	        case "RIGHT":
-		        System.err.println("came from the east!");
-		        moveDirection = tile.entriesAndExits.get(Direction.EAST);
+		        cameFromDirection = Direction.EAST;
 		        break;
 	        default:
 		        System.err.println("came from nowhere!");
 		        throw new IllegalStateException("Came from nowhere!");
+	        }
+
+	        System.err.println("came from the " + cameFromDirection.name());
+	        if (cameFromAnExit) {
+		        if (tile.entriesAndExits.values().contains(Direction.SOUTH)) {
+			        moveDirection = Direction.SOUTH;
+		        } else {
+			        for (Map.Entry<Direction, Direction> entry : tile.entriesAndExits.entrySet()) {
+				        if (entry.getValue() == cameFromDirection) {
+					        moveDirection = entry.getKey();
+					        break;
+				        }
+			        }
+		        }
+	        } else {
+		        moveDirection = tile.entriesAndExits.get(cameFromDirection);
+
+	        }
+
+	        if (moveDirection == Direction.NONE) {
+		        // TODO scream
 	        }
 
             // Write an action using System.out.println()
@@ -115,18 +135,27 @@ class Player {
 					        .map((e) -> e.getKey().name() + ": " + e.getValue().name())
 					        .collect(Collectors.joining(", ")));
 
+	        Rotation rotation = Rotation.NONE;
+
 	        if (!destinationTile.hasEntry(moveDirection.opposite())) {
-				if (destinationTile.hasEntry(moveDirection.rotate(Rotation.LEFT))) {
-					System.err.println("Rotating tile to the left");
-					output = newX + " " + newY + " LEFT";
-					board[newY][newX].rotate(Rotation.LEFT);
-				} else if (destinationTile.hasEntry(moveDirection.rotate(Rotation.RIGHT))) {
-					System.err.println("Rotating tile to the right");
-					output = newX + " " + newY + " RIGHT";
-					board[newY][newX].rotate(Rotation.RIGHT);
-				} else {
-					output = "ERROR";
-				}
+		        if (destinationTile.hasEntry(moveDirection.rotate(Rotation.LEFT))) {
+			        rotation = Rotation.LEFT;
+			        cameFromAnExit = false;
+		        } else if (destinationTile.hasEntry(moveDirection.rotate(Rotation.RIGHT))) {
+			        rotation = Rotation.RIGHT;
+			        cameFromAnExit = false;
+		        } else if (destinationTile.hasExit(moveDirection.rotate(Rotation.LEFT))) {
+			        cameFromAnExit = true;
+			        rotation = Rotation.LEFT;
+		        } else if (destinationTile.hasExit(moveDirection.rotate(Rotation.RIGHT))) {
+			        cameFromAnExit = true;
+			        rotation = Rotation.RIGHT;
+		        } else {
+			        throw new IllegalStateException("Could not find a way out!");
+		        }
+		        System.err.println("Rotating tile to the " + rotation.name());
+		        output = newX + " " + newY + " " + rotation.name();
+		        board[newY][newX].rotate(rotation);
 	        } else {
 		        output = "WAIT";
 	        }
@@ -138,7 +167,7 @@ class Player {
 	protected static Map<Integer, Tile> setupTiles() {
 		final HashMap<Integer, Tile> map = new HashMap<>();
 
-		map.put(0, new Tile(0, new HashMap<Direction, Direction>()));
+		map.put(0, new Tile(0, new HashMap<>()));
 
 		HashMap<Direction, Direction> entriesAndExits = new HashMap<>();
 
@@ -229,6 +258,10 @@ class Player {
 			return entriesAndExits.keySet().contains(direction);
 		}
 
+		public boolean hasExit(Direction direction) {
+			return entriesAndExits.values().contains(direction);
+		}
+
 		public void rotate(Rotation rotation) {
 			Map<Direction, Direction> newEntriesAndExits = new HashMap<>();
 
@@ -246,11 +279,11 @@ class Player {
 	}
 
 	enum Rotation {
-		LEFT, RIGHT;
+		NONE, LEFT, RIGHT;
 	}
 
 	enum Direction {
-		NORTH, SOUTH, EAST, WEST;
+		NONE, NORTH, SOUTH, EAST, WEST;
 
 		Direction opposite() {
 			switch (this) {

@@ -1,5 +1,6 @@
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
 
@@ -8,6 +9,13 @@ import java.util.*;
  * according to the problem statement.
  *
  */
+
+class Solution {
+	public static void main(String[] args) throws IOException {
+		System.out.println(PassengersSolution.solve(new Scanner(System.in)));
+	}
+
+}
 class PassengersSolution {
 	public static Instant beforeRead;
 	public static Instant afterRead;
@@ -18,19 +26,67 @@ class PassengersSolution {
 	    System.out.println(solve(in));
     }
 
-	protected static String solve5(Scanner in) {
+	protected static String solve(Scanner in) {
 		int places = in.nextInt();
 		int noOfIterations = in.nextInt();
 		int noOfGroups = in.nextInt();
 
-		final Deque<Integer> groups = new ArrayDeque<>();
-		for (int i = 0; i < noOfGroups; i++) {
+//		final Deque<Integer> groups = new ArrayDeque<>();
+		int groups[] = new int[noOfGroups];
 
+		for (int i = 0; i < noOfGroups; i++) {
+			groups[i] = in.nextInt();
 		}
-		return "";
+
+		int idx = 0;
+		int oldIdx;
+		int currentPassengers = 0;
+
+		Map<Integer, Pair> indexPlaces = new HashMap<>();
+
+		long totalAmountOfPassengers = 0;
+
+		for (int i = 0; i < noOfIterations; i++) {
+			if (indexPlaces.containsKey(idx)) {
+				final Pair pair = indexPlaces.get(idx);
+				totalAmountOfPassengers += pair.earnings;
+				idx = pair.nextIdx;
+				continue;
+			}
+
+			currentPassengers = 0;
+			oldIdx = idx;
+			while (places > currentPassengers) {
+				if (groups[idx] > places - currentPassengers) {
+					indexPlaces.put(oldIdx, new Pair(currentPassengers, idx));
+					break;
+				}
+
+				currentPassengers += groups[idx];
+
+				idx = (idx + 1) % groups.length;
+				if (idx == oldIdx) {
+					break;
+				}
+
+			}
+			totalAmountOfPassengers += currentPassengers;
+		}
+
+		return String.valueOf(totalAmountOfPassengers);
 	}
 
-	protected static String solve(Scanner in) {
+	static class Pair {
+		int nextIdx;
+		int earnings;
+
+		public Pair(int earnings, int nextIdx) {
+			this.earnings = earnings;
+			this.nextIdx = nextIdx;
+		}
+	}
+
+	protected static String solve6(Scanner in) {
 		int places = in.nextInt();
 		int noOfIterations = in.nextInt();
 		int noOfGroups = in.nextInt();

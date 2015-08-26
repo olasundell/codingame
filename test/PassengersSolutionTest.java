@@ -16,8 +16,8 @@ public class PassengersSolutionTest extends AbstractTest {
 		Assert.assertEquals(expected, result);
 		final long millis = Duration.between(start, end).toMillis();
 		Assert.assertTrue("Test took too long, it took " + millis, millis < 1000);
-		System.out.println(millis);
-		System.out.println(PassengersSolution.noOfTotalIters);
+//		System.out.println(millis);
+//		System.out.println(PassengersSolution.noOfTotalIters);
 	}
 
 	@Override

@@ -3,7 +3,7 @@ import java.io.StreamTokenizer;
 import java.io.StringReader;
 import java.util.Scanner;
 
-class Solution {
+class CgxSolution2 {
 	public static void main(String[] args) throws IOException {
 		System.out.println(CgxSolution.solve(new Scanner(System.in)));
 	}

@@ -10,12 +10,12 @@ import java.util.*;
  *
  */
 
-class Solution {
-	public static void main(String[] args) throws IOException {
-		System.out.println(PassengersSolution.solve(new Scanner(System.in)));
-	}
-
-}
+//class Solution {
+//	public static void main(String[] args) throws IOException {
+//		System.out.println(PassengersSolution.solve(new Scanner(System.in)));
+//	}
+//
+//}
 class PassengersSolution {
 	public static Instant beforeRead;
 	public static Instant afterRead;

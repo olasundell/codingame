@@ -1,12 +1,12 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-class Solution {
-	public static void main(String args[]) {
-		Scanner in = new Scanner(System.in);
-		System.out.println(new TanSolution().solve(in));
-	}
-}
+//class Solution {
+//	public static void main(String args[]) {
+//		Scanner in = new Scanner(System.in);
+//		System.out.println(new TanSolution().solve(in));
+//	}
+//}
 
 class TanSolution {
 	final Map<String, Stop> stops = new HashMap<>();

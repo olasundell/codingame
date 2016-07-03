@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 
-public class CgxSolutionTest extends AbstractTest {
+public class CgxSolutionTest extends OldAbstractTest {
 	@Test
 	public void one() throws IOException {
 		String result = CgxSolution.solve(buildScanner("Test_1_input.txt"));

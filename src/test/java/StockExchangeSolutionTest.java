@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class StockExchangeSolutionTest extends AbstractTest {
+public class StockExchangeSolutionTest extends OldAbstractTest {
 
 	@Test
 	public void one() throws IOException {

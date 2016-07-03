@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ApuSecondSolutionTest extends AbstractTest {
+public class ApuSecondSolutionTest extends OldAbstractTest {
 	@Test
 	public void getMatchesShouldMatch() {
 		Set<String> result = ApuSecondSolution.getMatches("ab", "babba");

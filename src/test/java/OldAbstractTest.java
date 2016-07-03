@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 
-public abstract class AbstractTest {
+@Deprecated
+public abstract class OldAbstractTest {
 	protected final static String DIR = "/Users/olasundell/code/codingame/src/";
 	protected abstract String getDir();
 

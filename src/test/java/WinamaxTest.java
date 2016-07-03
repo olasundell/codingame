@@ -3,12 +3,10 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-
 /**
  * TODO write documentation
  */
-public class WinamaxTest extends AbstractTest {
+public class WinamaxTest extends OldAbstractTest {
     @Test
     public void tenShouldWork() {
         WinamaxSolution.Card first = new WinamaxSolution.Card("10C");

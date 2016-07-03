@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class TanSolutionTest extends AbstractTest {
+public class TanSolutionTest extends OldAbstractTest {
 	@Test
 	public void one() throws IOException {
 		runTest(1);

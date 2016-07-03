@@ -2,9 +2,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Scanner;
 
-public class DwarfSolutionTest extends AbstractTest {
+public class DwarfSolutionTest extends OldAbstractTest {
 
 	@Test
 	public void simple() throws IOException {

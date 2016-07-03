@@ -3,7 +3,7 @@ import teads.TeadsChallengeSolution;
 
 import java.io.IOException;
 
-public class TeadsChallengeSolutionTest extends AbstractTest {
+public class TeadsChallengeSolutionTest extends OldAbstractTest {
 //	@Test
 //	public void shouldCalculateDistance() {
 //		teads.TeadsChallengeSolution.Node node = new teads.TeadsChallengeSolution.Node(teads.TeadsChallengeSolution.Node.NO_PARENT);

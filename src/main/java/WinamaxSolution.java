@@ -5,14 +5,14 @@ import java.util.Scanner;
 /**
  * Winamax
  */
-class Solution {
-	public static void main(String args[]) {
-		Scanner in = new Scanner(System.in);
-		System.out.println(new WinamaxSolution().solve(in));
-	}
-}
+//class Solution {
+//	public static void main(String args[]) {
+//		Scanner in = new Scanner(System.in);
+//		System.out.println(new WinamaxSolution().solve(in));
+//	}
+//}
 
-public class WinamaxSolution {
+class WinamaxSolution {
 	final Deque<Card> firstPlayer = new ArrayDeque<>();
 	final Deque<Card> secondPlayer = new ArrayDeque<>();
 
@@ -25,11 +25,6 @@ public class WinamaxSolution {
 		for (int i = 0; i < m; i++) {
 			secondPlayer.add(new Card(in.next())); // the m cards of player 2
 		}
-
-		System.err.println("-- START --");
-		System.err.println(firstPlayer.size() + ", " + firstPlayer);
-		System.err.println(secondPlayer.size() + ", " + secondPlayer);
-		System.err.println("-- START --");
 
 		// Write an action using System.out.println()
 		// To debug: System.err.println("Debug messages...");
@@ -51,14 +46,14 @@ public class WinamaxSolution {
 			System.err.println(secondPlayer.size() + ", " + secondPlayer);
 			System.err.println("----------");
 
+			if (firstPlayer.isEmpty()) {
+				return new Result(2, count);
+			} else if (secondPlayer.isEmpty()) {
+				return new Result(1, count);
+			}
+
 			one = firstPlayer.removeFirst();
 			two = secondPlayer.removeFirst();
-
-			if (firstPlayer.size() < 1) {
-				return new Result(2, ++count);
-			} else if (secondPlayer.size() < 1) {
-				return new Result(1, ++count);
-			}
 
 			if (one.compareTo(two) == 0) {
 				if (firstPlayer.size() < 3) {
@@ -81,10 +76,10 @@ public class WinamaxSolution {
 				secondPlay.clear();
 			} else {
 				count++;
-				secondPlayer.add(two);
-				secondPlayer.addAll(secondPlay);
 				secondPlayer.add(one);
 				secondPlayer.addAll(firstPlay);
+				secondPlayer.add(two);
+				secondPlayer.addAll(secondPlay);
 				firstPlay.clear();
 				secondPlay.clear();
 			}

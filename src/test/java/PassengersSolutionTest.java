@@ -4,9 +4,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Timer;
 
-public class PassengersSolutionTest extends AbstractTest {
+public class PassengersSolutionTest extends OldAbstractTest {
 	@Test
 	public void large() throws IOException {
 		Instant start = Instant.now();

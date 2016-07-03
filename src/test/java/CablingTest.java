@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class CablingTest extends AbstractTest {
+public class CablingTest extends OldAbstractTest {
 	@Test
 	public void distanceShouldWork() {
 		int distance = Cabling.distance(new Point(0,0), new Point(2,2));

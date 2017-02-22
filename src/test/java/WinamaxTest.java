@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * TODO write documentation
  */
-public class WinamaxTest extends OldAbstractTest {
+public class WinamaxTest extends AbstractTest {
     @Test
     public void tenShouldWork() {
         WinamaxSolution.Card first = new WinamaxSolution.Card("10C");
@@ -63,8 +63,4 @@ public class WinamaxTest extends OldAbstractTest {
         runTest(8, new WinamaxSolution()::solve);
     }
 
-    @Override
-    protected String getDir() {
-        return "winamax/";
-    }
 }

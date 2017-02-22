@@ -67,23 +67,22 @@ class WinamaxSolution {
 				}
 			} else if (one.compareTo(two) > 0) {
 				count++;
-				firstPlayer.add(one);
-				firstPlayer.addAll(firstPlay);
-				firstPlayer.add(two);
-				firstPlayer.addAll(secondPlay);
-
-				firstPlay.clear();
-				secondPlay.clear();
+				addToPlayer(firstPlayer, firstPlay, secondPlay, one, two);
 			} else {
 				count++;
-				secondPlayer.add(one);
-				secondPlayer.addAll(firstPlay);
-				secondPlayer.add(two);
-				secondPlayer.addAll(secondPlay);
-				firstPlay.clear();
-				secondPlay.clear();
+				addToPlayer(secondPlayer, firstPlay, secondPlay, one, two);
 			}
 		}
+	}
+
+	private void addToPlayer(Deque<Card> player, Deque<Card> firstPlay, Deque<Card> secondPlay, Card one, Card two) {
+		player.add(one);
+		player.addAll(firstPlay);
+		player.add(two);
+		player.addAll(secondPlay);
+
+		firstPlay.clear();
+		secondPlay.clear();
 	}
 
 	enum Suite {

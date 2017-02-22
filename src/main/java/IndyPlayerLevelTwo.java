@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
  **/
-class Player {
+class IndyPlayerLevelTwo {
 
     public static void main(String args[]) throws CloneNotSupportedException {
         Scanner in = new Scanner(System.in);

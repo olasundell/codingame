@@ -1,0 +1,26 @@
+{
+   "test" : {
+      "0" : {
+         "output" : "1221121221",
+         "title" : "Simple",
+         "input" : "10\n1 2"
+      },
+      "3" : {
+         "title" : "Big test",
+         "input" : "1000\n5 7",
+         "output" : "5555577777555557777755555777777755555557777777555555577777775555577777555557777755555777777755555557777777555555577777775555577777555557777755555777777755555557777777555555577777775555555777777755555777775555577777555557777755555777777755555557777777555555577777775555555777777755555777775555577777555557777755555777777755555557777777555555577777775555555777777755555777775555577777555557777777555555577777775555555777777755555777775555577777555557777777555555577777775555555777777755555777775555577777555557777777555555577777775555555777777755555557777777555557777755555777775555577777555557777777555555577777775555555777777755555557777777555557777755555777775555577777555557777777555555577777775555555777777755555557777777555557777755555777775555577777775555555777777755555557777777555557777755555777775555577777775555555777777755555557777777555557777755555777775555577777775555555777777755555557777777555555577777775555577777555557777755555777775555577777775555555777777755555557777777555555577777"
+      },
+      "2" : {
+         "output" : "99",
+         "input" : "2\n9 8",
+         "title" : "Small sequence"
+      },
+      "1" : {
+         "output" : "4444333344443333444333444333444433334444333344433344433344443333444433344433344443333444433344433344",
+         "input" : "100\n4 3",
+         "title" : "More symbols"
+      }
+   },
+   "title" : "Kolakoski Sequence",
+   "statement" : "<div class=\"statement-body\">\n<div class=\"statement-section statement-goal\">\n   <h1><span class=\"icon icon-goal\">&nbsp;</span><span>Goal </span></h1>\n   <span class=\"question-statement\">A <strong>Kolakoski sequence</strong>, named after William Kolakoski, is an infinite sequence of digits whose run lengths reduce to the sequence itself.<br><br>For example, the Kolakoski sequence for the numbers 1 and 2 is<br>1,2,2,1,1,2,1,2,2,1,2,2,1,1,2,1,1,2,2,1,2,1,1,2,1,2,2,1,1&hellip;<br>because, when writing down the successive run lengths of <const>1</const>s and <const>2</const>s, you get the same sequence back:<br><pre style=\"font-family: monospace\"><br>Sequence:    1  2 2  1 1  2  1  2 2  1  2 2 &hellip;<br>             ↕   ↕    ↕   ↕  ↕   ↕   ↕   ↕<br>Run lengths: 1   2    2   1  1   2   1   2  &hellip;  &larr; same sequence<br></pre>Your goal is to output the first <var>N</var> elements of the Kolakoski sequence given its first two distinct digits <var>A</var> and <var>B</var>.</span>\n</div>\n<div class=\"statement-section statement-protocol\">\n   <div class=\"blk\">\n      <div class=\"title\">Input</div>\n      <div class=\"question-statement-input\"><strong>Line 1:</strong> The number <var>N</var> of digits to output<br><strong>Line 2:</strong> The digits <var>A</var> and <var>B</var> which will form the sequence, in that order</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Output</div>\n      <div class=\"question-statement-output\">The Kolakoski sequence, without any separator.</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Constraints</div>\n      <div class=\"question-statement-constraints\">1 &le; N &le; 1000<br>1 &le; A &le; 9<br>1 &le; B &le; 9<br>A &ne; B</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Example</div>\n      <div class=\"statement-inout\">\n         <div class=\"statement-inout-in\">\n            <div class=\"title\">Input</div>\n            <pre class=\"question-statement-example-in\">10\n1 2</pre>\n         </div>\n         <div class=\"statement-inout-out\">\n            <div class=\"title\">Output</div>\n            <pre class=\"question-statement-example-out\">1221121221</pre>\n         </div>\n      </div>\n   </div>\n</div>"
+}

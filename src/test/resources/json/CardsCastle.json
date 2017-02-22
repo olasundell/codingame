@@ -1,0 +1,111 @@
+{
+   "statement" : "<div class=\"statement-body\">\n<div class=\"statement-section statement-goal\">\n   <h1><span class=\"icon icon-goal\">&nbsp;</span><span>Goal </span></h1>\n   <span class=\"question-statement\">Your goal is to determine if a card castle structure is stable or not.<br>You're given a 2D map composed of &quot;.&quot; (dots), &quot;/&quot; and &quot;\\&quot;,  representing a card castle of height <var>H</var> and width <const>H * 2</const>.<br><br>A card castle is unstable if :<br>- a &quot;/&quot; card is missing before a &quot;\\&quot; card (&quot;.\\&quot; is <const>UNSTABLE</const>)<br>- a &quot;\\&quot; card is missing after a &quot;/&quot; card (&quot;/.&quot; is <const>UNSTABLE</const>)<br>- two cards side by side have the same orientation (&quot;//\\&quot; or &quot;/\\\\&quot; is <const>UNSTABLE</const>)<br>- neither another card nor the ground are below (aka. a &quot;flying card&quot;)<br>- the card below has the same orientation<br><br>The structure is <const>STABLE</const> if and only if all cards are <const>STABLE</const>.</span>\n</div>\n<div class=\"statement-section statement-protocol\">\n   <div class=\"blk\">\n      <div class=\"title\">Input</div>\n      <div class=\"question-statement-input\"><strong>Line 1:</strong> An integer <var>H</var>, the number of lines in the map<br><strong><var>H</var> next lines:</strong> Each line of the map as a string</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Output</div>\n      <div class=\"question-statement-output\"><strong>Line 1:</strong> <const>STABLE</const> if the structure is stable, <const>UNSTABLE</const> otherwise</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Constraints</div>\n      <div class=\"question-statement-constraints\">0 &lt; <var>H</var> &lt;= 30</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Example</div>\n      <div class=\"statement-inout\">\n         <div class=\"statement-inout-in\">\n            <div class=\"title\">Input</div>\n            <pre class=\"question-statement-example-in\">4\n.../\\...\n../\\/\\..\n./\\/\\/\\.\n/\\/\\/\\/\\</pre>\n         </div>\n         <div class=\"statement-inout-out\">\n            <div class=\"title\">Output</div>\n            <pre class=\"question-statement-example-out\">STABLE</pre>\n         </div>\n      </div>\n   </div>\n</div>",
+   "title" : "Cards castle",
+   "test" : {
+      "18" : {
+         "output" : "STABLE",
+         "input" : "3\n......\n......\n.../\\.",
+         "title" : "The shifted unique one"
+      },
+      "6" : {
+         "title" : "A lot of cards are missing ?!",
+         "input" : "4\n........\n../\\....\n./\\/\\...\n/\\/\\/\\/\\",
+         "output" : "STABLE"
+      },
+      "1" : {
+         "output" : "STABLE",
+         "title" : "Little castle",
+         "input" : "2\n./\\.\n/\\/\\"
+      },
+      "12" : {
+         "output" : "STABLE",
+         "title" : "Starting on",
+         "input" : "5\n..........\n..........\n..........\n./\\..../\\.\n/\\/\\../\\/\\"
+      },
+      "9" : {
+         "title" : "Reversed cards",
+         "input" : "5\n..........\n....\\/....\n../\\/\\/\\..\n./\\/\\/\\/\\.\n/\\/\\/\\/\\/\\",
+         "output" : "UNSTABLE"
+      },
+      "16" : {
+         "input" : "5\n..........\n..//\\.....\n../\\/\\/\\..\n./\\/\\/\\/\\.\n/\\/\\/\\/\\/\\",
+         "title" : "Same flying card side by side",
+         "output" : "UNSTABLE"
+      },
+      "19" : {
+         "output" : "STABLE",
+         "input" : "4\n........\n........\n........\n........",
+         "title" : "Lost cards"
+      },
+      "2" : {
+         "output" : "UNSTABLE",
+         "input" : "2\n./\\.\n/./\\",
+         "title" : "Little fallen castle"
+      },
+      "7" : {
+         "title" : "Unstable single card",
+         "input" : "7\n..............\n...../\\/......\n..../\\/\\/\\....\n.../\\/\\/\\/\\...\n../\\/\\/\\/\\/\\..\n./\\/\\/\\/\\/\\/\\.\n/\\/\\/\\/\\/\\/\\/\\",
+         "output" : "UNSTABLE"
+      },
+      "10" : {
+         "output" : "STABLE",
+         "input" : "8\n................\n................\n................\n................\n................\n................\n...../\\../\\.....\n/\\/\\/\\/\\/\\/\\/\\/\\",
+         "title" : "Few floors"
+      },
+      "14" : {
+         "output" : "UNSTABLE",
+         "input" : "7\n....../\\......\n...../\\/\\.....\n..............\n.../\\/\\/\\/\\...\n../\\/\\/\\/\\/\\..\n./\\/\\/\\/\\/\\/\\.\n/\\/\\/\\/\\/\\/\\/\\",
+         "title" : "Flying castle cards"
+      },
+      "4" : {
+         "output" : "UNSTABLE",
+         "input" : "5\n..../\\....\n.../\\/\\...\n../\\/./\\..\n./\\.\\/\\/\\.\n/\\/\\/\\/\\/\\",
+         "title" : "Fallen fortress"
+      },
+      "3" : {
+         "output" : "STABLE",
+         "title" : "Fortress",
+         "input" : "6\n...../\\.....\n..../\\/\\....\n.../\\/\\/\\...\n../\\/\\/\\/\\..\n./\\/\\/\\/\\/\\.\n/\\/\\/\\/\\/\\/\\"
+      },
+      "0" : {
+         "output" : "STABLE",
+         "input" : "4\n.../\\...\n../\\/\\..\n./\\/\\/\\.\n/\\/\\/\\/\\",
+         "title" : "Example"
+      },
+      "13" : {
+         "output" : "STABLE",
+         "title" : "Shifted",
+         "input" : "5\n..........\n..........\n..........\n../\\......\n./\\/\\.../\\"
+      },
+      "8" : {
+         "title" : "Flying cards",
+         "input" : "4\n.../\\.\\/\n\\./\\/\\./\n./\\/\\/\\.\n/\\/\\/\\/\\",
+         "output" : "UNSTABLE"
+      },
+      "5" : {
+         "output" : "STABLE",
+         "input" : "4\n........\n../\\/\\..\n./\\/\\/\\.\n/\\/\\/\\/\\",
+         "title" : "Cards are missing ?"
+      },
+      "17" : {
+         "title" : "Flying reversed card side by side",
+         "input" : "6\n............\n............\n..\\/\\.......\n../\\/\\/\\/\\..\n./\\/\\/\\/\\/\\.\n/\\/\\/\\/\\/\\/\\",
+         "output" : "UNSTABLE"
+      },
+      "20" : {
+         "output" : "STABLE",
+         "title" : "Complex",
+         "input" : "15\n..............................\n..............................\n..............................\n..............................\n..............................\n..............................\n..............................\n..............................\n..............................\n..............................\n....../\\......../\\............\n...../\\/\\..../\\/\\/\\....../\\...\n..../\\/\\/\\../\\/\\/\\/\\/\\../\\/\\..\n./\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\.\n/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\"
+      },
+      "11" : {
+         "output" : "UNSTABLE",
+         "input" : "7\n..............\n..............\n..../\\./\\.....\n.../\\/\\/\\/\\...\n../\\/\\/\\/\\/\\..\n./\\/\\/\\/\\/\\/\\.\n/\\/\\/\\/\\/\\/\\/\\",
+         "title" : "On the gap"
+      },
+      "15" : {
+         "input" : "5\n..........\n....//\\...\n../\\/\\/\\..\n./\\/\\/\\/\\.\n/\\/\\/\\/\\/\\",
+         "title" : "Same card side by side",
+         "output" : "UNSTABLE"
+      }
+   }
+}

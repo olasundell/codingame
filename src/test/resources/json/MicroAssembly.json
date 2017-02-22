@@ -1,0 +1,46 @@
+{
+   "title" : "Micro Assembly",
+   "statement" : "<div class=\"statement-body\">\n<div class=\"statement-section statement-goal\">\n   <h1><span class=\"icon icon-goal\">&nbsp;</span><span>Goal </span></h1>\n   <span class=\"question-statement\">The task is to write an interpreter for a very simplistic assembly language and print the four register values after the instructions have been processed.<br><br><strong>Explanations:</strong><br><var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>: registers containing integer values<br><var>DEST</var>: write the operation result to this register<br><var>SRC</var>: read operand value from this register<br><var>IMM</var>: immediate/integer value<br><var>SRC|IMM</var> means that the operand can be either a register or an immediate value.<br><br>Command and operands are always separated by a blank.<br>The program starts with the first instruction, iterates through all instructions and ends when the last instruction was processed.<br>Only valid input is given and there are no endless loops or over-/underflows to be taken care of.<br><br><strong>List of defined assembly instructions:</strong><br><br><const>MOV</const> <var>DEST</var> <var>SRC|IMM</var><br>copies register or immediate value to destination register<br><strong>Example:</strong> MOV a 3 =&gt; a = 3<br><br><const>ADD</const> <var>DEST</var> <var>SRC|IMM</var> <var>SRC|IMM</var><br>add two register or immediate values and store the sum in destination register<br><strong>Example:</strong> ADD b c d =&gt; b = c + d<br><br><const>SUB</const> <var>DEST</var> <var>SRC|IMM</var> <var>SRC|IMM</var><br>subtracts the third value from the second and stores the result in destination register<br><strong>Example:</strong> SUB d d 2 =&gt; d = d - 2<br><br><const>JNE</const> <var>IMM</var> <var>SRC</var> <var>SRC|IMM</var><br>jumps to instruction number <var>IMM</var> (zero-based) if the other two values are not equal<br><strong>Example:</strong> JNE 0 a 0 =&gt; continue execution at line 0 if a is not zero<br><br><strong>Full example:</strong><br><pre style=\"font-family: monospace\">(line 0) MOV a 3      # a = 3<br>(line 1) ADD a a -1   # a = a + (-1)<br>(line 2) JNE 1 a 1    # jump to line 1 if a != 1</pre> <strong>Program execution:</strong><br>0: a = 3<br>1: a = a + (-1) = 3 + (-1) = 2<br>2: a != 1 -&gt; jump to line 1<br>1: a = a + (-1) = 2 + (-1) = 1<br>2: a == 1 -&gt; don't jump<br><br>Program finished, register <strong>a</strong> now contains value <strong>1</strong></span>\n</div>\n<div class=\"statement-section statement-protocol\">\n   <div class=\"blk\">\n      <div class=\"title\">Input</div>\n      <div class=\"question-statement-input\"><strong>Line 1</strong> contains the blank-separated values for the registers <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var><br><strong>Line 2</strong> contains the number <var>n</var> of the following instruction lines<br><var>n</var> lines containing assembly instructions</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Output</div>\n      <div class=\"question-statement-output\">Line with the four blank-separated register values of <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var></div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Constraints</div>\n      <div class=\"question-statement-constraints\">0 &lt; <var>n</var> &lt; 16<br>-2^15 &le; <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var> &lt; 2^15<br>Overflow and underflow behavior is unspecified (and not tested).</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Example</div>\n      <div class=\"statement-inout\">\n         <div class=\"statement-inout-in\">\n            <div class=\"title\">Input</div>\n            <pre class=\"question-statement-example-in\">1 2 3 -4\n2\nMOV b 3\nMOV c a</pre>\n         </div>\n         <div class=\"statement-inout-out\">\n            <div class=\"title\">Output</div>\n            <pre class=\"question-statement-example-out\">1 3 1 -4</pre>\n         </div>\n      </div>\n   </div>\n</div>",
+   "test" : {
+      "2" : {
+         "output" : "0 12 21 12",
+         "input" : "14 2 21 9\n3\nSUB a a a\nSUB d 12 a\nSUB b 15 3",
+         "title" : "SUB test"
+      },
+      "3" : {
+         "input" : "3 5 7 9\n2\nSUB b b 1\nJNE 0 b 0",
+         "output" : "3 0 7 9",
+         "title" : "JNE test"
+      },
+      "7" : {
+         "title" : "Multiplication and jump over instruction",
+         "output" : "105 0 0 0",
+         "input" : "0 7 5 3\n13\nADD a a b\nSUB c c 1\nJNE 0 c 0\nMOV b a\nSUB c d 1\nADD a a b\nSUB c c 1\nJNE 5 c 0\nSUB b 0 d\nJNE 11 a -105\nMOV a 0\nADD d d b\nSUB b b b"
+      },
+      "5" : {
+         "title" : "Calculating sum of 1..N",
+         "output" : "55 0 0 0",
+         "input" : "0 10 0 0\n3\nADD a a b\nSUB b b 1\nJNE 0 b 0"
+      },
+      "6" : {
+         "title" : "Nested loops",
+         "output" : "30 0 0 -7",
+         "input" : "1 3 3 7\n9\nMOV a 10\nMOV b 5\nMOV c b\nSUB c c 1\nADD a a c\nJNE 3 c 0\nSUB b b 1\nJNE 2 b c\nSUB d 0 d"
+      },
+      "0" : {
+         "output" : "1 3 1 -4",
+         "input" : "1 2 3 -4\n2\nMOV b 3\nMOV c a",
+         "title" : "MOV test"
+      },
+      "4" : {
+         "title" : "Handling negative values",
+         "input" : "0 -2 -3 -4\n4\nMOV a -1\nSUB b c -3\nADD d d -1\nJNE 2 d -10",
+         "output" : "-1 0 -3 -10"
+      },
+      "1" : {
+         "title" : "ADD test",
+         "input" : "2 3 4 5\n3\nADD a b 1\nADD b 2 7\nADD c a b",
+         "output" : "4 9 13 5"
+      }
+   }
+}

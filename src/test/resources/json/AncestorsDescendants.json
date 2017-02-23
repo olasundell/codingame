@@ -1,0 +1,36 @@
+{
+   "statement" : "<div class=\"statement-body\">\n<div class=\"statement-section statement-goal\">\n   <h1><span class=\"icon icon-goal\">&nbsp;</span><span>Goal </span></h1>\n   <span class=\"question-statement\">Print the names of a family's descendants.<br><br>An individual in the family is represented by a line of input. The parent/child relationship of that individual is determined by the number of dots preceding his or her name.<br><br>Each dot represents a previously mentioned ancestor in the family tree. So if a name is preceded by two dots, then the first dot represents the most recently mentioned name with zero dots before it, and the second dot represents the most recently mentioned name with a single dot before it.<br><br>An example set of input lines to represent a family would be:<br><br>Jade<br>.Andrew<br>..Rose<br>.Mark<br>Heidi<br><br>The explanation for this input is:<br><br>Jade is a grandfather.<br>Andrew is Jade's son.<br>Rose is Andrew's daughter.<br>Mark is Jade's son.<br>Heidi has no children.<br><br>The correct output lines to represent this family's descendants would be:<br><br>Jade &gt; Andrew &gt; Rose<br>Jade &gt; Mark<br>Heidi</span>\n</div>\n<div class=\"statement-section statement-protocol\">\n   <div class=\"blk\">\n      <div class=\"title\">Input</div>\n      <div class=\"question-statement-input\"><strong>Line 1:</strong> An integer <var>N</var> for the number of family members.<br><strong>Next <var>N</var> lines:</strong> Each line represents one family member.</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Output</div>\n      <div class=\"question-statement-output\">Output the family descendants full names each on a separate line.</div>\n   </div>\n   <div class=\"blk\">\n      <div class=\"title\">Example</div>\n      <div class=\"statement-inout\">\n         <div class=\"statement-inout-in\">\n            <div class=\"title\">Input</div>\n            <pre class=\"question-statement-example-in\">8\na\n.b\n..c\nd\n.e\n..f\n.g\nh</pre>\n         </div>\n         <div class=\"statement-inout-out\">\n            <div class=\"title\">Output</div>\n            <pre class=\"question-statement-example-out\">a &gt; b &gt; c\nd &gt; e &gt; f\nd &gt; g\nh</pre>\n         </div>\n      </div>\n   </div>\n</div>",
+   "test" : {
+      "3" : {
+         "input" : "22\nJohn\n.Sam\n..Randy\n..George\n...Alfred\n.Justin\n.Kelly\n..Jack\n...Lily\n....Susan\n.Jade\nRobert\n.Luke\nJonathan\nPaul\nKen\n.Flare\n..Kelly\n...Jessica\n....Martin\n.....Penelope\n..David",
+         "output" : "John > Sam > Randy\nJohn > Sam > George > Alfred\nJohn > Justin\nJohn > Kelly > Jack > Lily > Susan\nJohn > Jade\nRobert > Luke\nJonathan\nPaul\nKen > Flare > Kelly > Jessica > Martin > Penelope\nKen > Flare > David",
+         "title" : "Test 4"
+      },
+      "4" : {
+         "output" : "a > b > c > d > e > f > g > h > i > j > k > l > m\na > b > c > d > e > f > g > h > i > j > k > l > n\na > b > c > d > e > f > g > h > i > j > k > o\na > b > c > d > e > f > g > h > i > j > p\na > b > c > d > e > f > g > h > i > q\na > b > c > d > e > f > g > h > r\na > b > c > d > e > f > g > s\na > b > c > d > e > f > t\na > b > c > d > e > u\na > b > c > d > v\na > b > c > w\na > b > x\na > y\nz",
+         "title" : "Test 5",
+         "input" : "26\na\n.b\n..c\n...d\n....e\n.....f\n......g\n.......h\n........i\n.........j\n..........k\n...........l\n............m\n............n\n...........o\n..........p\n.........q\n........r\n.......s\n......t\n.....u\n....v\n...w\n..x\n.y\nz"
+      },
+      "0" : {
+         "input" : "8\na\n.b\n..c\nd\n.e\n..f\n.g\nh",
+         "title" : "Test 1",
+         "output" : "a > b > c\nd > e > f\nd > g\nh"
+      },
+      "2" : {
+         "input" : "28\na\n.a1\n..a11\n..a12\n...a121\n..a13\n...a131\n....a1311\n.....a13111\n......a131111\n...a132\n..a14\n..a15\n.a2\n.a3\n.a4\nb\n.b1\n.b2\nc\n.c1\n..c11\n...c111\n....c1111\n..c12\n...c121\n....c1211\n...c122",
+         "title" : "Test 3",
+         "output" : "a > a1 > a11\na > a1 > a12 > a121\na > a1 > a13 > a131 > a1311 > a13111 > a131111\na > a1 > a13 > a132\na > a1 > a14\na > a1 > a15\na > a2\na > a3\na > a4\nb > b1\nb > b2\nc > c1 > c11 > c111 > c1111\nc > c1 > c12 > c121 > c1211\nc > c1 > c12 > c122"
+      },
+      "5" : {
+         "output" : "Jade > Andrew > Rose\nJade > Mark\nHeidi",
+         "title" : "Test 6",
+         "input" : "5\nJade\n.Andrew\n..Rose\n.Mark\nHeidi"
+      },
+      "1" : {
+         "input" : "19\na\n.a1\n..a11\n...a111\n...a112\n..a12\n.a2\nb\n.b1\n..b11\n.b2\n..b21\n...b211\nc\n.c1\n..c11\n...c111\n....c1111\n.c2",
+         "title" : "Test 2",
+         "output" : "a > a1 > a11 > a111\na > a1 > a11 > a112\na > a1 > a12\na > a2\nb > b1 > b11\nb > b2 > b21 > b211\nc > c1 > c11 > c111 > c1111\nc > c2"
+      }
+   },
+   "title" : "Ancestors & Descendants"
+}

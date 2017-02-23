@@ -1,0 +1,26 @@
+{
+   "test" : {
+      "2" : {
+         "output" : "PAZD54 150\nPAZD54 250\nDJSS87 250",
+         "title" : "More than one car in excess speed",
+         "input" : "90\n9\nPAZD54 50 1447413071\nPAZD54 150 1447416671\nPAZD54 250 1447420211\nDJSS87 50 1447408801\nDJSS87 150 1447417501\nDJSS87 250 1447421101\nLSKD97 50 1447417436\nLSKD97 150 1447424636\nLSKD97 250 1447431836"
+      },
+      "3" : {
+         "title" : "Speed limit",
+         "input" : "100\n6\nSKRD94 75 1447407932\nSKRD94 175 1447411532\nSKRD94 275 1447415132\nZBZJ42 75 1447418732\nZBZJ42 175 1447422333\nZBZJ42 275 1447425932",
+         "output" : "ZBZJ42 275"
+      },
+      "1" : {
+         "output" : "OK",
+         "input" : "60\n4\nRSWJ98 152 1447416000\nRSWJ98 199 1447419600\nRSWJ98 247 1447423200\nRSWJ98 295 1447426800",
+         "title" : "No excess speed"
+      },
+      "0" : {
+         "title" : "Example Test",
+         "input" : "50\n3\nRSLJ97 134 1447409503\nRSLJ97 185 1447413099\nRSLJ97 201 1447420298",
+         "output" : "RSLJ97 185"
+      }
+   },
+   "title" : "Bust speeding vehicles",
+   "statement" : "<div class=\"statement_wrapping_div\" style=\"position: relative;\"> \n\n<style type=\"text/css\"> \n.statement_wrapping_div, .statement {font-size: 14px;font-weight: 400;}  \n.statement_wrapping_div {margin-bottom: 10px;}\n.statement_wrapping_div ul {padding-left: 40px;}\n.statement {background-color:rgba(255, 255, 255, 0.85);padding: 20px;padding-top:0px;}\ncode, span.const {display:inline-block;font-family:Inconsolata,consolas,monospace;padding-left:5px;padding-right:5px;padding-top:1px;padding-bottom:1px;background-color:#18a1ea;white-space: nowrap;margin-right:2px;color: white;}\nspan.var {display: inline-block;padding-left:5px;padding-right:5px;padding-top:1px;padding-bottom:2px;background-color:#f2dd00;white-space:nowrap;margin-left:1px;margin-right:2px;color:black;}\n.stat_mid_title {font-weight:700;margin-bottom:5px;}\n.protocol_title{color:#ffd200;}\n.cross-statementBlock{position:relative;}</style>\n\n<div class=\"stat_mid_title\">The program:</div>\n<div class=\"question-statement\">You must detect speeding vehicles by computing their average speed between two or more consecutive cameras on a given road.<br />You must print the License plate and the position of the camera where the excess speed has been detected.<br /><br />Your inputs contain all camera timestamped recordings for one or more license plates. All records are grouped by license plates and all camera distances are sorted in ascending order inside this group.<br />If no excess speed is detected, your program must print OK.</div><br />\n</div>\n\n<div style=\"background-color: rgba(0, 0, 0, 0.85);padding: 20px;color: white;margin-top: 10px;\">\n<div class=\"protocol_title\"><b>INPUT:</b></div>\n<div class=\"question-statement-input\"><strong>Line 1:</strong> An integer <span class=\"var\">L</span> for the Speed Limit for the given road (in Kilometers per hour).<br /><strong>Line 2:</strong> An integer <span class=\"var\">N</span> which represents the total number of camera readings.<br /><strong>Next <span class=\"var\">N</span> Lines:</strong> 3 space separated values: The license plate recorded <span class=\"var\">L</span>, the camera distance (in Kilometers from the begining of the road) <span class=\"var\">C</span> and the timestamp of the camera capture (number of seconds since 01/01/1970) <span class=\"var\">T</span>.</div><br /> \n\n<div class=\"protocol_title\"><b>OUTPUT:</b></div>\n<div class=\"question-statement-output\">For each speeding vehicles: print the license plate <span class=\"var\">L</span> with the detecting camera distance <span class=\"var\">C</span>, seperated by spaces, in the same order as input.<br />When no vehicle is speeding: print <span class=\"const\">OK</span></div><br /> \n\n<div class=\"protocol_title\"><b>CONSTRAINTS:</b></div>\n<div class=\"question-statement-constraints\">10 &#8804; <span class=\"var\">L</span> &#8804; 100<br />0 &#8804; <span class=\"var\">N</span> &#8804; 100<br />0 &#8804; <span class=\"var\">C</span> &#8804; 1000</div><br /> \n\n<div class=\"protocol_title\"><b>EXAMPLE:</b></div>\n<div style=\"border: 1px solid white; width: 440px;\">\n<div style=\"float: left; margin-left: 10px; padding-left: 10px; width: 200px; font-family: monospace;\">\n<div><b>Input</b></div>\n<div class=\"question-statement-example-in\">50<br />3<br />RSLJ97 134 1447409503<br />RSLJ97 268 1447411388<br />RSLJ97 403 1447412242</div>\n</div>\n<div style=\"margin-left: 10px; float: left; padding-left: 5px; width: 200px; font-family: monospace;\">\n<div><b>Output</b></div>\n<div class=\"question-statement-example-out\">RSLJ97 268</div>\n</div>\n<div style=\"clear: both;\">&nbsp;</div>\n</div>\n</div>"
+}
